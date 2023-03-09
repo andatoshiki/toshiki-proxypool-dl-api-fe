@@ -28,7 +28,7 @@ jobs:
         git add .
         git commit -m 'ci(api): update latest api metadata from `${{ env.TAG_NAME }}` of toshiki-proxypool'
         git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
-        git push -f origin download
+        git push -f origin api
     - name: Upload to API metadata to GitHub release
       uses: softprops/action-gh-release@v1
       env:
