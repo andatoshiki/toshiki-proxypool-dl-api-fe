@@ -26,7 +26,7 @@ jobs:
         git config user.email "101481353+andatoshiki@users.noreply.github.com"
         git checkout -b api
         git add .
-        git remote add origin "https://github.com/andatoshiki/toshiki-proxypool-check.git"
+        git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
         git commit -m 'ci(api): update latest api metadata from `${{ env.TAG_NAME }}` of toshiki-proxypool'
         git push -f origin api
     - name: Upload to API metadata to GitHub release
