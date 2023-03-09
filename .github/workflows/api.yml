@@ -16,7 +16,7 @@ jobs:
       run: |
         wget -O api https://dl-proxypool-api.toshiki.dev/api 
         mkdir -p upload
-        cp api.json api.json upload
+        cp api upload
         echo "TAG_NAME=$(date +"%Y.%m.%d")" >> $GITHUB_ENV
     - name: Push CONFIG file to "api" branch
       run: |
