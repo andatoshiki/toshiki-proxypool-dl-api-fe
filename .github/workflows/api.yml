@@ -1,0 +1,39 @@
+name: Publish toshiki-proxypool download API
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 8 * * *
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+    - name: Download generated metadata from API to JSON format
+      run: |
+        wget -O api https://dl-proxypool-api.toshiki.dev/api 
+        mkdir -p upload
+        cp api.json api.json upload
+        echo "TAG_NAME=$(date +"%Y.%m.%d")" >> $GITHUB_ENV
+    - name: Push CONFIG file to "api" branch
+      run: |
+        cd upload
+        git init
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
+        git checkout -b api
+        git add .
+        git commit -m 'ci(api): update latest api metadata from `${{ env.TAG_NAME }}` of toshiki-proxypool'
+        git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+        git push -f origin download
+    - name: Upload to API metadata to GitHub release
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.TAG_NAME }}
+        body: ${{ env.TAG_NAME }}
+        files: upload/api
