@@ -14,11 +14,11 @@ jobs:
     steps:
     - name: Download generated metadata from API to JSON format
       run: |
-        wget -O api https://dl-proxypool-api.toshiki.dev/api 
+        wget -O api https://dl-proxypool-api.toshiki.dev/api
         mkdir -p upload
         cp api upload
         echo "TAG_NAME=$(date +"%Y.%m.%d")" >> $GITHUB_ENV
-    - name: Push CONFIG file to "api" branch
+    - name: Push config file to "api" branch
       run: |
         cd upload
         git init
@@ -26,8 +26,8 @@ jobs:
         git config user.email "101481353+andatoshiki@users.noreply.github.com"
         git checkout -b api
         git add .
+        git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
         git commit -m 'ci(api): update latest api metadata from `${{ env.TAG_NAME }}` of toshiki-proxypool'
-        git remote add origin "https://andatoshiki:${{ secrets.GITHUB_TOKEN }}@github.com/toshiki-proxypool-dl-api-fe"
         git push -f origin api
     - name: Upload to API metadata to GitHub release
       uses: softprops/action-gh-release@v1
