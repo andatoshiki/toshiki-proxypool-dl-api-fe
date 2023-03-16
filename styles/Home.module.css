@@ -4,7 +4,7 @@
 
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
+  padding: 3rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@
 .footer {
   padding: 2rem 0;
   margin-top: 2rem;
-  border-top: 1px solid #eaeaea;
+  /* border-top: 0.1px solid; */
   justify-content: center;
   align-items: center;
 }
@@ -23,6 +23,10 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  /* background: -webkit-linear-gradient( 315deg, #42d392 25%, #647eff );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  line-height: 85px; */
 }
 
 @media (max-width: 600px) {
@@ -43,4 +47,39 @@
   .logo img {
     filter: invert(1);
   }
+}
+
+.loaderSvg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	transform: scale(2, 2);
+}
+
+.spinnerOut {
+	animation: dash1 10s linear forwards;
+	animation-iteration-count: infinite;
+	stroke-dasharray: 64;
+}
+
+.spinnerIn {
+	animation: dash2 20s linear forwards;
+	animation-iteration-count: infinite;
+	stroke-dasharray: 32;
+	shape-rendering: crispEdges;
+}
+
+@keyframes dash1 {
+	to {
+		stroke-dashoffset: -1024;	
+	}
+}
+
+@keyframes dash2 {
+	to {
+		stroke-dashoffset: -1024;	
+	}
 }
