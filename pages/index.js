@@ -53,7 +53,7 @@ function Home() {
             </div>
 
             <div className="col-md-4 col-sm-6 col-xs-12">
-              <h5 className='ms-2'>Pre-Releases</h5>
+              <h5 className='ms-1'>Pre-Releases</h5>
               <ul className="list-group">
                 {beta_items.map((item) => (
                   <a href={"https://dl-proxypool-r2.toshiki.dev/" + item.key}>
@@ -67,7 +67,7 @@ function Home() {
             </div>
 
             <div className="col-md-4 col-sm-6 col-xs-12">
-              <h5 className='ms-2'>Configs</h5>
+              <h5 className='ms-1'>Configs</h5>
               <ul className="list-group">
                 {config_items.map((item) => (
                   <a href={"https://dl-proxypool-r2.toshiki.dev/" + item.key}>
