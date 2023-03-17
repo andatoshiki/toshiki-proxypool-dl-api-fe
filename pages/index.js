@@ -58,7 +58,7 @@ function Home() {
               <ul className="list-group">
                 {beta_items.map((item) => (
                   <a href={"https://dl-proxypool-r2.toshiki.dev/" + item.key}>
-                    <li className="lh-lg list-group-item list-group-item-action">
+                    <li className="ms-2 me-auto list-group-item list-group-item-action justify-content-between align-items-start">
                       {item.key}
                       <span>&nbsp;</span><span className="badge bg-primary rounded-pill float-right">{filesize(item.size)}</span>
                       </li>
@@ -72,7 +72,7 @@ function Home() {
               <ul className="list-group">
                 {config_items.map((item) => (
                   <a href={"https://dl-proxypool-r2.toshiki.dev/" + item.key}>
-                    <li className="lh-lg list-group-item list-group-item-action">
+                    <li className="ms-2 me-auto list-group-item list-group-item-action justify-content-between align-items-start">
                       {item.key}
                       <span>&nbsp;</span><span className="badge bg-primary rounded-pill float-right">{filesize(item.size)}</span>
                       </li>
